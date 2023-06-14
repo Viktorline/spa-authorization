@@ -20,8 +20,9 @@ const LoginPage: React.FC = () => {
   const handleSubmit = async (values: any) => {
     try {
       const response = await axios.post('http://localhost:8080/login', values);
+      console.log(response);
       localStorage.setItem('token', response.data.token);
-      navigate('/');
+      navigate('/home');
     } catch (error: any) {
       setLoginError(`${error.response.data.error}`);
       console.error(error);
@@ -69,6 +70,9 @@ const LoginPage: React.FC = () => {
             <Form.Item>
               <Button type='primary' htmlType='submit' loading={isSubmitting}>
                 Log in
+              </Button>
+              <Button type='link' onClick={() => navigate('/register')}>
+                Register
               </Button>
             </Form.Item>
           </Form>
