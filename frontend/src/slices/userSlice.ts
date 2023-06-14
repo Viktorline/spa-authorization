@@ -12,7 +12,7 @@ export const fetchUser = createAsyncThunk('user/fetchUser', async () => {
   const response = await axios.get('http://localhost:8080/about', {
     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
   });
-  return response.data;
+  return response.data.data;
 });
 
 const userSlice = createSlice({
