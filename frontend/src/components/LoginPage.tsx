@@ -22,8 +22,8 @@ const LoginPage: React.FC = () => {
       const response = await axios.post('http://localhost:8080/login', values);
       localStorage.setItem('token', response.data.token);
       navigate('/');
-    } catch (error) {
-      setLoginError('Failed to login. Please check your username and password.');
+    } catch (error: any) {
+      setLoginError(`${error.response.data.error}`);
       console.error(error);
     }
   };
